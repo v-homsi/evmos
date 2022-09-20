@@ -1,10 +1,10 @@
 before:
   hooks:
-  - go mod download
+    - go mod download
 
 builds:
   - id: "evmosd-darwin"
-    main: ./cmd/evmosd
+    main: ./
     binary: bin/evmosd
     env:
       - CGO_ENABLED=1
@@ -15,11 +15,11 @@ builds:
     goarch:
       - amd64
     flags:
-        - -tags=cgo
+      - -tags=cgo
     ldflags:
       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=evmos -X github.com/cosmos/cosmos-sdk/version.AppName=evmosd -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
   - id: "evmosd-darwin-arm64"
-    main: ./cmd/evmosd
+    main: ./
     binary: bin/evmosd
     env:
       - CGO_ENABLED=1
@@ -34,7 +34,7 @@ builds:
     ldflags:
       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=evmos -X github.com/cosmos/cosmos-sdk/version.AppName=evmosd -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
   - id: "evmosd-linux"
-    main: ./cmd/evmosd
+    main: ./
     binary: bin/evmosd
     env:
       - CGO_ENABLED=1
@@ -49,7 +49,7 @@ builds:
     ldflags:
       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=evmos -X github.com/cosmos/cosmos-sdk/version.AppName=evmosd -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
   - id: "evmosd-linux-arm64"
-    main: ./cmd/evmosd
+    main: ./
     binary: bin/evmosd
     env:
       - CGO_ENABLED=1
@@ -64,7 +64,7 @@ builds:
     ldflags:
       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=evmos -X github.com/cosmos/cosmos-sdk/version.AppName=evmosd -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
   - id: "evmosd-windows"
-    main: ./cmd/evmosd
+    main: ./
     binary: bin/evmosd
     env:
       - CGO_ENABLED=1
@@ -81,29 +81,29 @@ builds:
       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=evmos -X github.com/cosmos/cosmos-sdk/version.AppName=evmosd -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
 
 archives:
-- name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
-  replacements:
-    darwin: Darwin
-    linux: Linux
-    windows: Windows
-    amd64: x86_64
-  format_overrides:
-    - goos: windows
-      format: zip
-  builds:
-  - evmosd-darwin
-  - evmosd-darwin-arm64
-  - evmosd-windows
-  - evmosd-linux
-  - evmosd-linux-arm64
-  
+  - name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      amd64: x86_64
+    format_overrides:
+      - goos: windows
+        format: zip
+    builds:
+      - evmosd-darwin
+      - evmosd-darwin-arm64
+      - evmosd-windows
+      - evmosd-linux
+      - evmosd-linux-arm64
+
 checksum:
-  name_template: 'checksums.txt'
+  name_template: "checksums.txt"
 changelog:
   sort: asc
   filters:
     exclude:
-    - '^docs:'
-    - '^test:'
+      - "^docs:"
+      - "^test:"
 snapshot:
   name_template: "{{ .Tag }}-next"

@@ -9,13 +9,15 @@ import (
 
 	"github.com/evmos/evmos/v9/app"
 	cmdcfg "github.com/evmos/evmos/v9/cmd/config"
+
+	cmd "github.com/evmos/evmos/v9/cmd/evmosd"
 )
 
 func main() {
 	setupConfig()
 	cmdcfg.RegisterDenoms()
 
-	rootCmd, _ := NewRootCmd()
+	rootCmd, _ := cmd.NewRootCmd()
 
 	if err := svrcmd.Execute(rootCmd, "evmosd", app.DefaultNodeHome); err != nil {
 		switch e := err.(type) {

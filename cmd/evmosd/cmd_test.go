@@ -1,4 +1,4 @@
-package main_test
+package evmosd_test
 
 import (
 	"fmt"
@@ -10,7 +10,9 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/evmos/evmos/v9/app"
+	
 	evmosd "github.com/evmos/evmos/v9/cmd/evmosd"
+
 )
 
 func TestInitCmd(t *testing.T) {

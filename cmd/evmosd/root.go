@@ -1,4 +1,4 @@
-package main
+package evmosd
 
 import (
 	"errors"
@@ -11,10 +11,6 @@ import (
 
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
-
-	tmcli "github.com/tendermint/tendermint/libs/cli"
-	"github.com/tendermint/tendermint/libs/log"
-	dbm "github.com/tendermint/tm-db"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
@@ -37,6 +33,9 @@ import (
 	servercfg "github.com/evmos/ethermint/server/config"
 	srvflags "github.com/evmos/ethermint/server/flags"
 	tmcfg "github.com/tendermint/tendermint/config"
+	tmcli "github.com/tendermint/tendermint/libs/cli"
+	"github.com/tendermint/tendermint/libs/log"
+	dbm "github.com/tendermint/tm-db"
 
 	"github.com/evmos/evmos/v9/app"
 	cmdcfg "github.com/evmos/evmos/v9/cmd/config"
