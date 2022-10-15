@@ -169,3 +169,5 @@ replace (
 )
 
 replace github.com/confio/ics23/go => github.com/cosmos/cosmos-sdk/ics23/go v0.8.0
+
+replace github.com/cosmos/iavl => github.com/v-homsi/iavl v1.19.3-custom-mo
